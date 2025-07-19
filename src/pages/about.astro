@@ -1,0 +1,53 @@
+---
+import YouTubePopup from '../components/react/YouTubePopup.jsx';
+import PageLayout from "@/layouts/Base.astro";
+import { siteConfig } from "@/site.config";
+import SocialList from "@/components/SocialList.astro";
+
+const meta = {
+	description: "I'm a starter theme for Astro.build",
+	title: "About",
+};
+---
+
+<PageLayout meta={meta}>
+	<h1 class="title mb-6">About</h1>
+<div class="prose prose-sm prose-cactus max-w-none space-y-6 ">
+  <p>
+  AHmmm AHmm, I am kushagra, I like coffee and love shit-talking. <br> <br>
+  Over the last few months i got wholly interested in low level
+  programming, system design ,compilers(<em>will_build.future</em>), Linux internals**
+  — the whole “<em>programming near the metal</em>” thing, but still know <a href="https://youtu.be/CUhVm9XPeZA?t=6" target="_blank">jack fuck of anything</a>.
+<!--  <YouTubePopup client:load />  -->
+
+
+<br> anyways I also have to get my hands dirty inside shitty abstracted languages too cuz uk who doesn't want sanity; trying to do web-dev, i know ai is here! </p> <br>
+
+  <p>
+    also i practice reading,
+    (<span class="text-sm font-light italic text-emerald-700 px-1.5 py-0.2 rounded ">
+      tip : people say this to prove they are an intellectuall arsehole
+    </span>), trying to follow camus' absurd way of life ;
+  </p>
+
+  <div class="text-xs italic ps-0 space-y-5 bg-zinc-600/50 p-2 mt-4 rounded border-l-4 border-accent">
+    <p class="mb-1 ml-2">The outcome is pretty much as you would expect –</p>
+    <ul class="list-none ps-3">
+      <li>✖ No fucking social life.</li>
+      <li>✖ Perfectly curved spine.</li>
+      <li>✖ A bulb in the room brighter than my future.</li>
+    </ul>
+  </div>
+
+  <p>
+  <br>
+What I do is, I build things, pretty useless things, often trying to reinvent the wheel but with a catch......i make it worse!
+
+	<SocialList />
+  </p>
+
+</div>
+
+</PageLayout>
+
+
