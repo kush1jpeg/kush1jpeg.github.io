@@ -1,4 +1,4 @@
-import type { SiteConfig } from "@/types";
+import type { SiteConfig } from "./types";
 import type { AstroExpressiveCodeOptions } from "astro-expressive-code";
 
 export const siteConfig: SiteConfig = {
@@ -41,10 +41,10 @@ export const menuLinks: { path: string; title: string }[] = [
 		path: "/posts/",
 		title: "Blogs",
 	},
-	{
-		path: "/notes/",
-		title: "Shelf",
-	},
+	//	{
+	// 	path: "/notes/",
+	// 	title: "Shelf",
+	// },
 	{
 		path: "/about/",
 		title: "About",
