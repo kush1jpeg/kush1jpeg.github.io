@@ -94,7 +94,7 @@ _no need to mug this up_ , its all in the man pages -
 int main(int argc, char *argv[]) {
   pid_t a = fork();
   if (a == -1) {
-    printf("Unsucessfull");
+    printf("Unsuccessful");
     return 1;
   } else if (a == 0) {
     printf("success");
@@ -119,7 +119,7 @@ int main(int argc, char *argv[]) {
   printf("creating a fork \n");
   pid_t a = fork();
   if (a == -1) {
-    printf("Unsucessfull \n");
+    printf("Unsuccessful \n");
     return 1;
   }
   printf("success from fork \n");
@@ -161,7 +161,7 @@ int main(int argc, char *argv[]) {
   printf("creating a fork \n");
   pid_t a = fork();
   if (a == -1) {
-    printf("Unsucessfull \n");
+    printf("Unsuccessful \n");
     return 1;
   }
 
@@ -202,7 +202,7 @@ int main(int argc, char *argv[]) {
   printf("creating a fork \n");
   pid_t a = fork();
   if (a == -1) {
-    printf("Unsucessfull \n");
+    printf("Unsuccessful \n");
     return 1;
   }
 
