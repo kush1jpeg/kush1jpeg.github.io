@@ -28,7 +28,7 @@ export const siteConfig: SiteConfig = {
 	*/
 	title: "malloc(brain)",
 	// ! Please remember to replace the following site property with your own domain, used in astro.config.ts
-	url: "https://kush.github.io",
+	url: "https://kush1jpeg.github.io",
 };
 
 // Used to generate links in both the Header & Footer.
