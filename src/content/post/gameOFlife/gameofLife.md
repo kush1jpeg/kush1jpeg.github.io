@@ -67,7 +67,7 @@ Their “period” (how many steps before they repeat) becomes their identity.
 
 these give the game a movement.
 Same idea, except now the oscillator shifts its position slightly each cycle.
-Gliders are the smallest and most iconic — the “atoms” of computation in Life.
+Gliders are the smallest and most iconic -> the “atoms” of computation in Life.
 
  4. Guns : factories of spaceships
 
