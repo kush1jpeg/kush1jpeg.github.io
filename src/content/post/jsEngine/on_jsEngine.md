@@ -94,7 +94,7 @@ cuz now the indexes changed although the values are the same but now b is at ind
 
 - changing object shapes nukes optimizations can be inferred from the case of hidden classes
 
-- for the very same reasons try-catch block , eval , etc are hated cuz they decrease predictibility  of the engine.
+- for the very same reasons try-catch block , eval , etc are hated cuz they decrease predictability  of the engine.
 
 
 
