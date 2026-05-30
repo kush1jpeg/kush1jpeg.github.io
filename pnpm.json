@@ -1,0 +1,12 @@
+{
+	"onlyBuiltDependencies": [
+		"@biomejs/biome",
+		"@resvg/resvg-js",
+		"@tailwindcss/oxide",
+		"esbuild",
+		"sharp"
+	],
+	"overrides": {
+		"sharp": "^0.34.2"
+	}
+}

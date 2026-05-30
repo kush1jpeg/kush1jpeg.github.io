@@ -54,7 +54,7 @@ so we have
 
 we can count the memory used by each process or a group of them in the form of page. when multiple cgroup are using the same page the cost is born by the first cgroup which demanded it (shifts to the next cgroup - incase this cgroup gets terminated)
 
-- cgroup defines limits....soft(memory.high) and hard(memory.max) but docker only has hard limit
+- cgroup defines limits....soft(memory.high) and hard(memory.max) but docker only has hard limit,
 process terminates on hitting the hard limit (OOM)...so when containers hit the hard limit, kernel kills a random process inside the container, which is why we only put one service in one container to know what caused the OOM issue.
 
 as in for the soft limit the kernel doesn't stop the process but aggressively starts to drop pages stored for that cgroup

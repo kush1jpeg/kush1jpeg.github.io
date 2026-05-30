@@ -19,8 +19,8 @@ const pinnedPosts = allPostsByDate
     .filter((p) => p.data.pinned)
     .slice(0, MAX_PINNED_POSTS);
 
-// Notes, set to a max of 5
-const MAX_NOTES = 5;
+// Projects, set to a max of 5
+const MAX_NOTES = 3;
 const allNotes = await getCollection("note");
 const latestNotes = allNotes
 	.sort(collectionDateSort)
@@ -70,6 +70,13 @@ const latestNotes = allNotes
 						</li>
 					))}
 				</ul>
+        <div class="mt-8 flex justify-center">
+          <a href="/notes/"
+             class=" text-accent/90 hover:bg-accent rounded-md px-3 py-1 text-xs font-extralight transition-colors hover:text-white"
+    >
+        View All Projects →
+    </a>
+</div>
 			</section>
 
       <section>

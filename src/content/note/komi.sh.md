@@ -1,10 +1,10 @@
 ---
 title: komi.sh
-description: A shell made from scratch in C
+description: A shell made from scratch in C (raw input → lexer → parser → AST → execution)
 publishDate: "2025-06-14T11:23:00Z"
 ---
 
-komi.sh is a UNIX shell implemented from scratch in C, built it during the summer break after freshman year.
+komi.sh is a UNIX shell implemented from scratch in C, built it during the summer break after freshman year, a step towards Compiler Construction journey.
 
 Features a handcrafted lexical analyzer for tokenizing raw character streams, a recursive descent parser that encodes grammar production rules directly as C functions, and a full AST construction and traversal pipeline for execution.
 
