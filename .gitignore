@@ -24,8 +24,6 @@ pnpm-debug.log*
 .cache
 .astro
 
-# Lockfiles (choose one, never both)
-pnpm-lock.yaml
 
 # IDEs/editors
 .idea/
