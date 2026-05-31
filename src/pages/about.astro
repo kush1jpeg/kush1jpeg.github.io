@@ -1,61 +1,72 @@
 ---
-import YouTubePopup from '../components/react/YouTubePopup.jsx';
-import PageLayout from "@/layouts/Base.astro";
-import { siteConfig } from "@/site.config";
 import SocialList from "@/components/SocialList.astro";
+import PageLayout from "@/layouts/Base.astro";
 
 const meta = {
-	description: "kush1jpeg's github page",
+	description: "I'm a starter theme for Astro.build",
 	title: "About",
 };
 ---
 
 <PageLayout meta={meta}>
 	<h1 class="title mb-6">About</h1>
-<div class="prose prose-sm prose-cactus max-w-none space-y-6 ">
-  <p>
-  Wubba Lubba dub-dub , I am kushagra -> kush1jpeg (in the online world), say my name thrice and will appear infront of u
-  telling how arch and nvim is the best (though i am still learning both). I like coffee more than i like people... <br> <br>
 
-  I sometimes code, a little bit, i am falling in love with the world of low level
-  programming, system design ,compilers(<em>will_build.future_inPain</em>), internals**
-  - the whole “<em>programming near the metal</em>” thing, but still know <a href="https://youtu.be/CUhVm9XPeZA" target="_blank">jack fuck of anything</a>.
-<!--  <YouTubePopup client:load />  -->
-<div class="flex items-center gap-2 p-0 m-0" >
-  <p>
+	<div class="prose prose-sm prose-cactus max-w-none space-y-6">
+		<p>
+			Wubba Lubba dub-dub - I'm Kushagra, `kush1jpeg` in the parts of the internet that matter.
+			Say my name three times and I'll appear in front of you explaining why Arch is the only right choice
+			u'll ever make and why you should be using Neovim (I'm still learning both, but the conviction is unwavering).
 
-To maintain some illusion of employability (and a little sanity for the people around me) i have to get my hands dirty inside shitty abstracted languages
-like web dev and insert buzzword framework in the resume.
-Yes, I know AI is coming for my job. I just hope it takes me out quickly. <br> <br>
+			<br />
+			<br />
+
+			I'm a third-year CS student who fell down the rabbit hole of systems programming and everything that lives close to the metal makes my platonic mind erupt:
+			kernels, compilers(<em>will_build.future_inPain</em>), linux-ricing, systems,
+			<a href="https://www.youtube.com/watch?v=4K8IEzXnMYk" target="_blank">but still, am not him</a>.
+			My current, is backend engineering and distributed systems. I find this stuff genuinely
+			beautiful in a way I can't fully explain to people who haven't felt it, ofcourse not at par
+			with the low level stuff: but definitely serves as a more socially acceptable replacement to it /ifykyk
+		</p>
+
+		<p>
+			To maintain some illusion of employability (and a little sanity for the people around me) i have to get my hands dirty inside dumbo-abstracted languages
+			for web dev and insert buzzword framework in the resume.
+			Yes, I know AI is coming for my job. I just hope it takes me out quickly.
 
 
-    also
-    <span class="text-sm font-light italic text-emerald-700 rounded">
-      i really hate the ubermensch dream
-    </span>,
-    trying to follow Camus' absurd way of life — "Life is meaningless"
-  </p>
-<img
-  src="/camus1.jpg"
-  alt="Camus"
-  class="w-55 h-50 object-contain border-2 border-gray-400 rounded-xl"
-/>
 
-</div>
+	<img
+	src="/camus1.jpg"
+	alt="Camus"
+	class="float-right ml-6 mb-4 w-56 border-2 border-gray-400 rounded-xl"
+  />
 
-  <p>
-    <h3> What I do</h3>
-    I build, pretty useless things, often trying to reinvent the wheel but with a catch......i make it worse! but proudly! <br>
-    tldr - they are mostly stupid things with oddly over-ambitious ideas, either way, don't rescue me — document it.
-    <br> <br> If you made it this far, congratulations -
-    You now know more about me than my extended family.
-    For everything else -
+			<br />
+			<br />
 
-	<SocialList />
-  </p>
+			Philosophically speaking-
+			<span class="text-sm font-light italic text-emerald-300 rounded">
+				i really hate that ubermensch dream
+			</span>,
+			of a certain guy with the big mustache :>
+			trying to follow Camus' absurd way of living — "Life is meaningless"
+		</p>
+		<p>
+			Not only i follow Camus' ideology, like him - I drink more coffee than is medically advisable with a death-stick in one hand.
+      The aim is to become a hybrid athelete or as the saying goes-
 
-</div>
+			<div class="text-sm font-light italic text-purple-300 rounded">
+        "OUTrun the runners, <br>
+        OUTlift the lifters, <br>
+        OUTdrink the drinkers"
+      </div>
+		</p>
 
+			If you made it this far, congratulations -
+			You now know more about me than my extended family.
+			For everything else -
+		</p>
+
+		<SocialList />
+	</div>
 </PageLayout>
-
-

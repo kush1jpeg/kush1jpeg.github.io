@@ -34,10 +34,10 @@ export default defineConfig({
 		webmanifest({
 			// See: https://github.com/alextim/astro-lib/blob/main/packages/astro-webmanifest/README.md
 			name: siteConfig.title,
-			short_name: "Astro_Cactus", // optional
+			short_name: "malloc(brain)", // optional
 			description: siteConfig.description,
 			lang: siteConfig.lang,
-			icon: "public/icon.svg", // the source for generating favicon & icons
+			icon: "public/logo.png", // the source for generating favicon & icons
 			icons: [
 				{
 					src: "icons/apple-touch-icon.png", // used in src/components/BaseHead.astro L:26
@@ -86,12 +86,7 @@ export default defineConfig({
 			},
 		},
 	},
-	// https://docs.astro.build/en/guides/prefetch/
-	prefetch: true,
 	vite: {
-		optimizeDeps: {
-			exclude: ["@resvg/resvg-js"],
-		},
 		plugins: [tailwind(), rawFonts([".ttf", ".woff"])],
 	},
 	env: {
