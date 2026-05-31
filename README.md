@@ -5,6 +5,6 @@ I just stood on his shoulders and scribbled graffiti on the walls.
 ---
 
 ## 🖥️ Live Site
-👉 [malloc(brain)](https://kush.github.io)
+👉 [malloc(brain)](https://kush1jpeg.github.io)
 
 ---

@@ -1,15 +1,7 @@
 {
   "extends": "astro/tsconfigs/strictest",
   "compilerOptions": {
-    "types": [
-      "astro/client"
-    ],
     "baseUrl": ".",
-    "lib": [
-      "es2022",
-      "dom",
-      "dom.iterable"
-    ],
     "paths": {
       "@/*": [
         "src/*"
