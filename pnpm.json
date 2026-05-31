@@ -6,6 +6,7 @@
 		"esbuild",
 		"sharp"
 	],
+	"ignoredBuiltDependencies": ["sharp@0.32.6"],
 	"overrides": {
 		"sharp": "^0.34.2"
 	}
