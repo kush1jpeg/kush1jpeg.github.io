@@ -1,0 +1,106 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+import type { GetStaticPaths, Page } from "astro";
+import { Icon } from "astro-icon/components";
+import EssayPreview from "@/components/essay/EssayPreview.astro";
+import Pagination from "@/components/Paginator.astro";
+import PageLayout from "@/layouts/Base.astro";
+import { collectionDateSort } from "@/utils/date";
+import { getAllEssays} from "@/data/getAllEssays";
+
+export const getStaticPaths = (async ({ paginate }) => {
+	const MAX_ESSAYS_PER_PAGE = 10;
+
+	const allEssays = await getAllEssays();
+	const allEssaysByDate = allEssays.sort(collectionDateSort);
+
+	const pinnedEssays = allEssaysByDate
+		.filter((e) => e.data.pinned)
+		.slice(0, 3);
+
+	return paginate(allEssaysByDate, {
+		pageSize: MAX_ESSAYS_PER_PAGE,
+		props: {
+			pinnedEssays: pinnedEssays,
+		},
+	});
+}) satisfies GetStaticPaths;
+
+interface Props {
+	page: Page<CollectionEntry<"essays">>;
+	pinnedEssays: CollectionEntry<"essays">[];
+}
+
+const { page, pinnedEssays } = Astro.props;
+
+const meta = {
+	description: "Read my collection of essays and the things that interest me",
+	title: "Essays",
+};
+
+const paginationProps = {
+	...(page.url.prev && {
+		prevUrl: {
+			text: "← Previous Page",
+			url: page.url.prev,
+		},
+	}),
+	...(page.url.next && {
+		nextUrl: {
+			text: "Next Page →",
+			url: page.url.next,
+		},
+	}),
+};
+
+ function groupPostsByYear(posts: CollectionEntry<"essays">[]) {
+  return Object.groupBy(posts, (post) =>
+    post.data.publishDate.getFullYear().toString(),
+  );
+}
+
+const groupedByYear = groupPostsByYear(page.data);
+const descYearKeys = Object.keys(groupedByYear).sort((a, b) => +b - +a);
+---
+
+<PageLayout meta={meta}>
+	<div class="mb-12 flex items-center gap-3">
+		<h1 class="title">Essays</h1>
+		<a class="text-accent" href="/rss.xml" target="_blank">
+			<span class="sr-only">RSS feed</span>
+			<Icon aria-hidden="true" class="h-6 w-6" focusable="false" name="mdi:rss" />
+		</a>
+	</div>
+			{
+				pinnedEssays.length > 0 && (
+					<section class="mb-16">
+						<h2 class="title mb-6 text-xl">Pinned Essays</h2>
+						<ul class="space-y-4" role="list">
+							{pinnedEssays.map((p) => (
+								<li >
+									<EssayPreview essay={p} />
+								</li>))}
+						</ul>
+					</section>
+				)
+			}
+			{
+				descYearKeys.map((yearKey) => (
+					<section class="mb-16">
+						<h2 id={`year-${yearKey}`} class="title text-lg">
+							<span class="sr-only">Posts in</span>
+							{yearKey}
+						</h2>
+						<ul class="mt-5 space-y-4 text-start">
+							{groupedByYear[yearKey]?.map((p) => (
+								<li class="">
+									<EssayPreview essay={p} />
+								</li>
+							))}
+						</ul>
+					</section>
+				))
+			}
+			<Pagination {...paginationProps} />
+</PageLayout>
+

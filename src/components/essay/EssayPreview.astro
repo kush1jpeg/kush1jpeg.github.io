@@ -1,0 +1,45 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { Image } from "astro:assets";
+
+const { essay } = Astro.props;
+---
+<a
+  href={`/essays/${essay.id}/`}
+  class="group flex gap-4 rounded-md border border-[color:var(--color-global-text)]/10 
+         bg-essay
+         p-4 transition
+         hover:bg-essay-hover"
+>
+  <!-- IMAGE -->
+  <div class="shrink-0">
+    <Image
+      src={essay.data.coverImage.src}
+      alt={essay.data.coverImage.alt}
+      class="h-24 w-32 rounded-sm object-cover transition duration-200
+             opacity-90 grayscale
+             group-hover:opacity-100"
+    />
+  </div>
+
+  <!-- TEXT -->
+  <div class="min-w-0">
+
+    <h2
+      class="text-lg font-semibold text-[color:var(--color-accent-2)]"
+    >
+      {essay.data.title}
+    </h2>
+
+    <p
+      class="mt-1 text-sm text-[color:var(--color-global-text)]/80 line-clamp-2"
+    >
+      {essay.data.description}
+    </p>
+
+    <div class="mt-2 text-xs text-[color:var(--color-global-text)]/50">
+      {essay.data.publishDate?.toDateString()}
+    </div>
+
+  </div>
+</a>

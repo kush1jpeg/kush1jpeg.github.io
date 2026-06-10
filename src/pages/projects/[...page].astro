@@ -2,19 +2,19 @@
 import { type CollectionEntry, getCollection } from "astro:content";
 import type { GetStaticPaths, Page } from "astro";
 import { Icon } from "astro-icon/components";
-import Note from "@/components/note/Note.astro";
+import Projects from "@/components/projects/Projects.astro";
 import Pagination from "@/components/Paginator.astro";
 import PageLayout from "@/layouts/Base.astro";
 import { collectionDateSort } from "@/utils/date";
 
 export const getStaticPaths = (async ({ paginate }) => {
 	const MAX_NOTES_PER_PAGE = 10;
-	const allNotes = await getCollection("note");
+	const allNotes = await getCollection("projects");
 	return paginate(allNotes.sort(collectionDateSort), { pageSize: MAX_NOTES_PER_PAGE });
 }) satisfies GetStaticPaths;
 
 interface Props {
-	page: Page<CollectionEntry<"note">>;
+	page: Page<CollectionEntry<"projects">>;
 	uniqueTags: string[];
 }
 
@@ -44,16 +44,16 @@ const paginationProps = {
 <PageLayout meta={meta}>
 	<section>
 		<h1 class="title mb-12 flex items-center gap-3">
-			Projects <a class="text-accent" href="/notes/rss.xml" target="_blank">
+			Projects <a class="text-accent" href="/projects/rss.xml" target="_blank">
 				<span class="sr-only">RSS feed</span>
 				<Icon aria-hidden="true" class="h-6 w-6" focusable="false" name="mdi:rss" />
 			</a>
 		</h1>
 		<ul class="mt-6 space-y-8 text-start">
 			{
-				page.data.map((note) => (
+				page.data.map((projects) => (
 					<li class="">
-						<Note note={note} as="h2" isPreview />
+						<Projects projects={projects} as="h2" isPreview />
 					</li>
 				))
 			}

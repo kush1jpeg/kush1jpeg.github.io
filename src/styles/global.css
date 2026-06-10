@@ -14,7 +14,9 @@ you could refactor below to use light-dark(), depending on your target audience 
 	--color-global-text: oklch(26.99% 0.0096 235.05);
 	--color-link: oklch(55.44% 0.0431 185.69);
 	--color-accent: oklch(55.27% 0.195 19.06);
-	--color-accent-2: oklch(18.15% 0 0);
+   --color-essay:oklch(96% 0.03 85); 
+         --color-essay-hover: oklch(94% 0.045 85);
+   --color-accent-2: oklch(18.15% 0 0);
 	--color-quote: oklch(55.27% 0.195 19.06);
 }
 
@@ -33,6 +35,8 @@ you could refactor below to use light-dark(), depending on your target audience 
 			--color-global-bg: oklch(19.5% 0.006 270);
 			--color-global-text: oklch(83.54% 0 264);
 			--color-link: oklch(70.44% 0.1133 349);
+      --color-essay: oklch(24% 0.007 270);  
+         --color-essay-hover: oklch(28% 0.01 270);  
 			--color-accent: oklch(70% 0.14 280);
 			--color-accent-2: oklch(94.66% 0 0);
 			--color-quote: oklch(94.8% 0.106 136.49);
@@ -122,4 +126,3 @@ you could refactor below to use light-dark(), depending on your target audience 
     text-decoration: underline dashed;
   }
 </style>
-

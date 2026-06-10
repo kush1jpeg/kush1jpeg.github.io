@@ -38,14 +38,39 @@ const post = defineCollection({
     }),
 });
 
-const note = defineCollection({
-  loader: glob({ base: "./src/content/note", pattern: "**/*.{md,mdx}" }),
+const projects = defineCollection({
+  loader: glob({ base: "./src/content/projects", pattern: "**/*.{md,mdx}" }),
   schema: baseSchema.extend({
     description: z.string().optional(),
     publishDate: z.iso
       .datetime({ offset: true }) // Ensures ISO 8601 format with offsets allowed (e.g. "2024-01-01T00:00:00Z" and "2024-01-01T00:00:00+02:00")
       .transform((val) => new Date(val)),
   }),
+});
+
+const essays = defineCollection({
+  loader: glob({ base: "./src/content/essays", pattern: "**/*.{md,mdx}" }),
+  schema: ({ image }) =>
+    baseSchema.extend({
+      description: z.string(),
+      coverImage: z
+        .object({
+          alt: z.string(),
+          src: image(),
+        })
+        .optional(),
+      draft: z.boolean().default(false),
+      ogImage: z.string().optional(),
+      publishDate: z
+        .string()
+        .or(z.date())
+        .transform((val) => new Date(val)),
+      updatedDate: z
+        .string()
+        .optional()
+        .transform((str) => (str ? new Date(str) : undefined)),
+      pinned: z.boolean().default(false),
+    }),
 });
 
 const tag = defineCollection({
@@ -56,4 +81,4 @@ const tag = defineCollection({
   }),
 });
 
-export const collections = { post, note, tag };
+export const collections = { post, projects, essays, tag };
