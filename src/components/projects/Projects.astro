@@ -12,21 +12,20 @@ const { as: Tag = "div", projects, isPreview = false } = Astro.props;
 const { Content } = await render(projects);
 ---
 
+<a 
+  href={`/projects/${projects.id}/`} 
+  class="block no-underline hover:opacity-80 transition-opacity"
+>
 <article
 	class:list={[isPreview && "bg-global-text/5 grid rounded-md px-4 py-3"]}
-	data-pagefind-body={isPreview ? false : true}
 >
-	<Tag class="title" class:list={{ "text-base": isPreview }}>
-		{
-			isPreview ? (
-				<a class="cactus-link" href={`/projects/${projects.id}/`}>
-					{projects.data.title}
-        </a>
-			) : (
-				<>{projects.data.title}</>
-			)
-		}
-	</Tag>
+<Tag class="title" class:list={{ "text-base": isPreview }}>
+  {
+  <span class="underline underline-offset-2 decoration-link">
+        {projects.data.title}
+      </span>
+  }
+</Tag>
 	<FormattedDate
 		dateTimeOptions={{
 			year: "2-digit",
@@ -55,3 +54,4 @@ const { Content } = await render(projects);
 	)}
 </div>
 </article>
+<a/>

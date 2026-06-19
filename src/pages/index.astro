@@ -60,7 +60,7 @@ const latestProjects = allProjects
 	{
 		latestProjects.length > 0 && (
 			<section class="mt-10">
-				<h2 class="title text-global-text mb-6 text-xl">
+				<h2 class="title text-accent mb-6 text-xl">
           <a href="/projects/">Projects</a>
 				</h2>
 				<ul class="space-y-6" role="list">
@@ -83,7 +83,7 @@ const latestProjects = allProjects
         <h2 class="mb-6 mt-8  text-sm font-semibold tracking-widest text-accent">kush1jpeg/SKILLS.md</h2>
     <div class="mb-8">
     <img
-      src="https://skillicons.dev/icons?i=js,typescript,react,nodejs,mongodb,express,tailwind,arch,neovim,cpp,c,redis,docker"
+        src="https://skillicons.dev/icons?i=js,typescript,react,nodejs,mongodb,express,tailwind,arch,neovim,cpp,c,redis,docker,cloudflare,rabbitmq"
       alt="Tech Stack"
     />
     </div>
@@ -95,7 +95,7 @@ const latestProjects = allProjects
     </section>
 
     	<section class="mt-16">
-		<h2 class="title text-accent mb-6 text-xl"><a href="/posts/">Essays</a></h2>
+		<h2 class="title text-accent mb-6 text-xl"><a href="/essays/">Essays</a></h2>
 		<ul class="space-y-4" role="list">
 			{
 				latestEssays.map((p) => (
@@ -106,15 +106,13 @@ const latestProjects = allProjects
 			}
 		</ul>
             <div class="mt-8 flex justify-center">
-          <a href="/posts/"
+          <a href="/essays/"
              class=" text-accent/90 hover:bg-accent rounded-md px-3 py-1 text-xs font-extralight transition-colors hover:text-white"
     >
-        View All Blogs →
+        View All Essays →
     </a>
 </div>
 	</section>
-
-
 		)
 	}
 </PageLayout>

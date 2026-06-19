@@ -10,7 +10,7 @@ type Props<Tag extends HTMLTag> = Polymorphic<{ as: Tag }> & {
 
 const { as: Tag = "div", post, withDesc = false } = Astro.props;
 ---
-<Tag class="group flex gap-4 py-3 border-b border-neutral-800/40 hover:bg-essay-hover transition">
+<Tag class="group flex gap-4 py-3 border-b border-neutral-800/40 hover:bg-essay transition">
 
   {/* Thumbnail */}
   <div class="shrink-0">
