@@ -14,7 +14,7 @@ export const siteConfig: SiteConfig = {
     },
   },
   // Used as the default description meta property and webmanifest description
-  description: "A crappy guy's journey of becoming less crappy",
+  description: "journey of your 10x dev",
   // HTML lang property, found in src/layouts/Base.astro L:18 & astro.config.ts L:48
   lang: "en-GB",
   // Meta property, found in src/components/BaseHead.astro L:42

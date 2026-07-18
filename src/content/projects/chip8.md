@@ -8,7 +8,9 @@ Reverse-engineered the behavior of a classic virtual machine by building a CHIP-
 
 The emulator interprets 35 CHIP-8 instructions in real time, translating raw bytecode into an interactive system, CPU state transitions, memory architecture, stack operations, timer cycles, input processing, and graphics rendering.
 
-Converts raw ROM instructions into a functioning emulated system, exposing the mechanics hidden beneath modern software abstractions.
+Converts raw ROM instructions into a functioning emulated system, exposing the mechanics hidden beneath modern software abstractions
+
+Serves as a stepping stone towards making a (Nintendo-Entertainment-Systems) NES emulator from scratch
 
 For a more comprehensive look-
 ::github{repo="kush1jpeg/NOT_CHIP8"}
