@@ -20,7 +20,7 @@ i had already been using nginx as a rate-limiter and as a static-server to serve
 
 The ngx_http_auth_request_module allows you to implement client authorization based on the result of an internal subrequest, i wired up the config to test out after reading some docs;
 
-#### live:static serve
+### live:static serve
 ```sh
         # streamId -> key resolution, and then serve the file from the /hls/ directory
         location ~ ^/hls/(?<stream_id>[^/]+)/(?<file>.+)$ {
@@ -61,8 +61,56 @@ the flow now became something like -
 
  ![live](/assets/backend/v2.png)
 
+#### bingo problem 
+but there is a big problem in this config; 
+it looks correct; it seems correct; ask an llm, she says you are good to go;
+buttttt............ on running it, the nginx always gave me an empty streamKey, at first i thought it was caching, as claude told me that it may cache the first empty response and then serves the cached response ever after, on doing a curl from the nginx container i was getting the streamKeys but not from the host machine/browser; i initially thought of it to be a networking issue, tried everything llm suggested just to make it work, even started banging my head after every failure just to wake up even the most distant brain cells; but no success;
 
-#### VOD - r2
+after spending 25+hours on this,
+the mistake was assuming - nginx runs directives top to bottom like normal code!
+```sh
+auth_request /_resolveLive;
+auth_request_set $stream_key $upstream_http_x_stream_key;
+rewrite ^ /hls-serve/$stream_key/$file break;
+```
+
+The problem is nginx processes directives in phases:
+
+- Rewrite phase
+  - return
+  - rewrite
+- Access phase
+  - auth_request
+- Content phase
+  - try_files
+  - static file serving / alias
+
+So my rewrite ran before auth_request had set the headers giving me empty streamKey;
+
+also after reading some blog "static server with proxy using nginx" i got to know about try_files which made the code modular by removing the internal redirect block to the alias;
+so the config for live became-
+
+```sh
+        # streamId -> key resolution, and then serve the file from the /hls/ directory
+        location ~ ^/hls/(?<stream_id>[^/]+)/(?<file>.+)$ {
+            auth_request /_resolveLive;
+            auth_request_set $stream_key $upstream_http_x_stream_key;
+            add_header X-Debug-Key $stream_key always;
+            try_files /__never_exists__ /hls-serve/live/$stream_key/$file;
+        }
+
+        # to get the streamkey
+        location = /_resolveLive {
+            internal;
+            proxy_pass http://job-server:3000/resolve-stream;
+            proxy_pass_request_body off;
+            proxy_set_header Content-Length "";
+            proxy_set_header X-Original-URI $request_uri;
+        }
+```
+
+
+### VOD - r2
 the flow worked perfectly but the main problem still remained, VOD retrieval which is not lying in the disk but rather on the cloudflare servers(r2), and also the bucket is private so i cannot just directly fetch the urls; had the bucket not been using streamKeys as their naming convention but rather a uuid, i would have made the bucket public and just sent the uuid sent back to the client and client would then directly fetch from the r2, no middle man involved;
 
 but because of the streamKeys bucket is private, i am tensed, life is difficult and dull.
