@@ -10,119 +10,120 @@ AND all its child elements
 
 you could refactor below to use light-dark(), depending on your target audience */
 @theme {
-	--color-global-bg: oklch(98.48% 0 0);
-	--color-global-text: oklch(26.99% 0.0096 235.05);
-	--color-link: oklch(55.44% 0.0431 185.69);
-	--color-accent: oklch(55.27% 0.195 19.06);
-   --color-essay:oklch(96% 0.03 85); 
+  --color-global-bg: oklch(98.48% 0 0);
+  --color-global-text: oklch(26.99% 0.0096 235.05);
+  --color-link: oklch(55.44% 0.0431 185.69);
+  --color-accent: oklch(55.27% 0.195 19.06);
+  --color-essay: oklch(96% 0.03 85);
   --color-essay-hover: oklch(94% 0.045 85);
-   --color-accent-2: oklch(18.15% 0 0);
-	--color-quote: oklch(55.27% 0.195 19.06);
+  --color-accent-2: oklch(18.15% 0 0);
+  --color-quote: oklch(55.27% 0.195 19.06);
 }
 
 @layer base {
-	html {
-		color-scheme: light dark;
-		accent-color: var(--color-accent);
-		scrollbar-gutter: stable;
+  html {
+    color-scheme: light dark;
+    accent-color: var(--color-accent);
+    scrollbar-gutter: stable;
 
-		&[data-theme="light"] {
-			color-scheme: light;
-		}
+    &[data-theme="light"] {
+      color-scheme: light;
+    }
 
-		&[data-theme="dark"] {
-			color-scheme: dark;
-			--color-global-bg: oklch(19.5% 0.006 270);
-			--color-global-text: oklch(83.54% 0 264);
-			--color-link: oklch(70.44% 0.1133 349);
-      --color-essay: oklch(24% 0.007 270);  
-      --color-essay-hover: oklch(28% 0.01 270);  
-			--color-accent: oklch(70% 0.14 280);
-			--color-accent-2: oklch(94.66% 0 0);
-			--color-quote: oklch(94.8% 0.106 136.49);
-		}
-	}
+    &[data-theme="dark"] {
+      color-scheme: dark;
+      --color-global-bg: oklch(19.5% 0.006 270);
+      --color-global-text: oklch(83.54% 0 264);
+      --color-link: oklch(70.44% 0.1133 349);
+      --color-essay: oklch(24% 0.007 270);
+      --color-essay-hover: oklch(28% 0.01 270);
+      --color-accent: oklch(70% 0.14 280);
+      --color-accent-2: oklch(94.66% 0 0);
+      --color-quote: oklch(94.8% 0.106 136.49);
+    }
+  }
 
-	:target {
-		scroll-margin-block: 5ex;
-	}
+  :target {
+    scroll-margin-block: 5ex;
+  }
 
-	@view-transition {
-		navigation: auto;
-	}
+  @view-transition {
+    navigation: auto;
+  }
 
-	/* Astro image responsive styles, modified from -> https://docs.astro.build/en/guides/images/#responsive-image-styles */
-	:where([data-astro-image]) {
-		object-fit: var(--fit);
-		object-position: var(--pos);
-	}
-	[data-astro-image="full-width"] {
-		width: 100%;
-	}
-	[data-astro-image="constrained"] {
-		max-width: 100%;
-	}
+  /* Astro image responsive styles, modified from -> https://docs.astro.build/en/guides/images/#responsive-image-styles */
+  :where([data-astro-image]) {
+    object-fit: var(--fit);
+    object-position: var(--pos);
+  }
+  [data-astro-image="full-width"] {
+    width: 100%;
+  }
+  [data-astro-image="constrained"] {
+    max-width: 100%;
+  }
 }
 
 @layer components {
-	@import "./components/admonition.css";
-	@import "./components/github-card.css";
+  @import "./components/admonition.css";
+  @import "./components/github-card.css";
 
-	.cactus-link {
-		@apply hover:decoration-link underline underline-offset-2 hover:decoration-2;
-	}
+  .cactus-link {
+    @apply hover:decoration-link underline underline-offset-2 hover:decoration-2;
+  }
 
-	.title {
-		@apply text-accent-2 text-2xl font-semibold;
-	}
+  .title {
+    @apply text-accent-2 text-2xl font-semibold;
+  }
 }
 
 @utility prose {
-	--tw-prose-body: var(--color-global-text);
-	--tw-prose-bold: var(--color-global-text);
-	--tw-prose-bullets: var(--color-global-text);
-	--tw-prose-code: var(--color-global-text);
-	--tw-prose-headings: var(--color-accent-2);
-	--tw-prose-hr: 0.5px dashed #666;
-	--tw-prose-links: var(--color-global-text);
-	--tw-prose-quotes: var(--color-quote);
-	--tw-prose-th-borders: #666;
+  --tw-prose-body: var(--color-global-text);
+  --tw-prose-bold: var(--color-global-text);
+  --tw-prose-bullets: var(--color-global-text);
+  --tw-prose-code: var(--color-global-text);
+  --tw-prose-headings: var(--color-accent-2);
+  --tw-prose-hr: 0.5px dashed #666;
+  --tw-prose-links: var(--color-global-text);
+  --tw-prose-quotes: var(--color-quote);
+  --tw-prose-th-borders: #666;
 }
 
 /*  about section */
 .popup {
-    display: none;
-    position: fixed;
-    top: 10%;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1000;
-    background: #111;
-    padding: 1rem;
-    border-radius: 10px;
-    box-shadow: 0 0 20px #000;
-  }
+  display: none;
+  position: fixed;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  background: #111;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 0 20px #000;
+}
 
-  .popup iframe {
-    width: 560px;
-    height: 315px;
-  }
+.popup iframe {
+  width: 560px;
+  height: 315px;
+}
 
-  .backdrop {
-    display: none;
-    position: fixed;
-    top: 0; left: 0;
-    width: 100vw; height: 100vh;
-    background: rgba(0,0,0,0.7);
-    z-index: 999;
-  }
+.backdrop {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 999;
+}
 
-  .show {
-    display: block;
-  }
+.show {
+  display: block;
+}
 
-  .clickable-word {
-    cursor: pointer;
-    text-decoration: underline dashed;
-  }
-</style>
+.clickable-word {
+  cursor: pointer;
+  text-decoration: underline dashed;
+}
