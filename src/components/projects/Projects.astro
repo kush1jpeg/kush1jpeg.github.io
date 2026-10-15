@@ -4,54 +4,51 @@ import FormattedDate from "@/components/FormattedDate.astro";
 import type { HTMLTag, Polymorphic } from "astro/types";
 
 type Props<Tag extends HTMLTag> = Polymorphic<{ as: Tag }> & {
-	projects: CollectionEntry<"project">;
-	isPreview?: boolean | undefined;
+  projects: CollectionEntry<"project">;
+  isPreview?: boolean | undefined;
 };
 
 const { as: Tag = "div", projects, isPreview = false } = Astro.props;
 const { Content } = await render(projects);
 ---
 
-<a 
-  href={`/projects/${projects.id}/`} 
+<a
+  href={`/projects/${projects.id}/`}
   class="block no-underline hover:opacity-80 transition-opacity"
 >
-<article
-	class:list={[isPreview && "bg-global-text/5 grid rounded-md px-4 py-3"]}
->
-<Tag class="title" class:list={{ "text-base": isPreview }}>
-  {
-  <span class="underline underline-offset-2 decoration-link">
+  <article
+    class:list={[isPreview && "bg-global-text/5 grid rounded-md px-4 py-3"]}
+  >
+    <Tag class="title" class:list={{ "text-base": isPreview }}>
+      <span class="underline underline-offset-2 decoration-link">
         {projects.data.title}
       </span>
-  }
-</Tag>
-	<FormattedDate
-		dateTimeOptions={{
-			year: "2-digit",
-			month: "2-digit",
-			day: "2-digit",
-		}}
-		date={projects.data.publishDate}
-	/>
+    </Tag>
 
-<div
-	class="prose prose-sm prose-cactus mt-4 max-w-none [&>p:last-of-type]:mb-0"
-	class:list={{ "line-clamp-6": isPreview }}
->
-  	{isPreview && (
-		<Fragment>
-				{projects.data.description}
+    <FormattedDate
+      dateTimeOptions={{
+        year: "2-digit",
+        month: "2-digit",
+        day: "2-digit",
+      }}
+      date={projects.data.publishDate}
+    />
 
-		</Fragment>
-	)}
+    <div
+      class="prose prose-sm prose-cactus mt-4 max-w-none [&>p:last-of-type]:mb-0"
+      class:list={{ "line-clamp-6": isPreview }}
+    >
+      {isPreview && (
+        <Fragment>
+          {projects.data.description}
+        </Fragment>
+      )}
 
-
-	{!isPreview && (
-		<Fragment>
-			<Content />
-		</Fragment>
-	)}
-</div>
-</article>
-<a/>
+      {!isPreview && (
+        <Fragment>
+          <Content />
+        </Fragment>
+      )}
+    </div>
+  </article>
+</a>

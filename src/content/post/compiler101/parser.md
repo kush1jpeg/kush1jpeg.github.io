@@ -254,7 +254,7 @@ static ASTNode *parse_binary(Parser *parser, ASTNode *left, Token op) {
 
 ## that's it?
 this concludes the part1 of the compiler creation journey;  
-The parser now handles expressions: literals, unary minus and not, binary operators, grouping, assignment, and function calls, all from one while loop and a precedence table. here’s 1 + 2 * 3 = ... going in and AST coming out.
+The parser now handles expressions: literals, unary minus and not, binary operators, grouping, assignment, and function calls, all from one while loop and a precedence table..
 
 upcoming is where it actually becomes a true parser: [block and declarations parsing, panic mode, function calls, etc ].
 
